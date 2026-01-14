@@ -24,6 +24,10 @@ public class Employee {
 
         Map<String, List<Employee>> resultMap = new HashMap<>();
 
+        // validations
+        if (employees == null || employees.isEmpty()) {
+            return resultMap;
+        }
 
         for(Employee e : employees){
             // get list for department, or create new one
