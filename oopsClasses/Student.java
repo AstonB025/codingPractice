@@ -53,8 +53,31 @@ public class Student {
         return grades.getOrDefault(subject, -1);
     }
 
+    public double getAverageGrade(){
+
+        double sum = 0.0;
+        for(int marks : grades.values()){
+            sum = sum + marks;
+        }
+        return (double )sum/grades.size();
+    }
 
 
+        public char getLetterGrade(){
+            double average = getAverageGrade();
+
+            if(average >= 90){
+                return 'A';
+            } else if(average >=80){
+                return 'B';
+            } else if(average >= 70){
+                return 'C';
+            }else if(average >= 60){
+                return 'D';
+            } else {
+                return 'F';
+            }
+        }
 
     @Override
     public String toString() {
