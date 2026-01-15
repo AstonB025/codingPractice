@@ -41,7 +41,7 @@ public class ReverseWordInSentence {
             result.append(data[i]);
 
 //            result.append(" "); // this gives an extra space at the end.
-            
+
             if (i != 0) {
                 result.append(" ");
             }
