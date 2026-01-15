@@ -21,14 +21,12 @@ A generic class is declared much like a normal class, but a type parameter secti
 
 * */
 
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class SimpleCache<K, V> {
 
     private final int maxSize;
     private final Map<K, V> cache;
+
+    // final makes the reference immutable, NOT the object.
 
     public SimpleCache(int maxSize) {
         if (maxSize <= 0) {
@@ -36,7 +34,7 @@ public class SimpleCache<K, V> {
         }
         this.maxSize = maxSize;
 
-        this.cache = new LinkedHashMap<K, V>(maxSize, 0.75f, false) {
+        this.cache = new LinkedHashMap<K, V>() {
             @Override
             protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
                 return size() > SimpleCache.this.maxSize;
