@@ -75,39 +75,3 @@ public class DiningPhilosopher extends Thread{
 
 }
 
-class Main{
-    public static void main(String[] args) {
-
-        ChopStick[] chopSticks = new ChopStick[5];
-        for(int i=0; i<5; i++){
-            chopSticks[i] = new ChopStick(i);
-        }
-
-        DiningPhilosopher[] philosophers = new DiningPhilosopher[5];
-        for(int i=0; i<5; i++){
-
-            ChopStick left = chopSticks[i];
-            ChopStick right = chopSticks[(i + 1) % 5]; //circular condition
-
-            philosophers[i] = new DiningPhilosopher(i, left, right);
-            philosophers[i].setName("philosopher-" + i);
-        }
-
-        for(DiningPhilosopher p : philosophers){
-            p.start();
-        }
-
-        // Wait for all to finish (they won't - deadlock!)
-        for(DiningPhilosopher ph : philosophers){
-            try {
-                ph.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        System.out.println("All philosophers finished eating");
-
-    }
-}
-
