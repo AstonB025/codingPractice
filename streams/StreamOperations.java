@@ -84,6 +84,8 @@ public class StreamOperations {
                 Arrays.asList(6, 7, 8, 9)
         );
 
+        System.out.println(nested);
+
         List<Integer> flattened = nested.stream()
                 .flatMap(list -> list.stream())
                 .collect(Collectors.toList());
@@ -94,6 +96,20 @@ public class StreamOperations {
                 .collect(Collectors.toList());
 
         System.out.println("Even Numbers: " + evens);
+
+
+
+
+
+        List<List<String>> nestedWords = Arrays.asList(
+                Arrays.asList("one", "two"),
+                Arrays.asList("three", "four")
+        );
+
+        List<String> flattenedWords = nestedWords.stream()
+                .flatMap(list-> list.stream())
+                .collect(Collectors.toList());
+        System.out.println("Flattened words " + flattenedWords);
 
 
     }
