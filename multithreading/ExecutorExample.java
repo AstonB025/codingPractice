@@ -1,5 +1,39 @@
 package multithreading;
 
+
+/*
+* // 1. Fixed pool — fixed number of threads
+Executors.newFixedThreadPool(5);
+// Use when: known workload, controlled concurrency
+
+// 2. Cached pool — creates threads as needed
+Executors.newCachedThreadPool();
+// Use when: many short-lived tasks, variable load
+
+// 3. Single thread — one thread, sequential
+Executors.newSingleThreadExecutor();
+// Use when: tasks must run in order
+
+// 4. Scheduled — run after delay or periodically
+Executors.newScheduledThreadPool(3);
+// Use when: cron-like tasks, delayed execution
+*
+*
+*
+*executor.shutdown()
+→ Finish all submitted tasks
+→ Then shutdown gracefully
+→ Like "finish your current orders then close"
+
+executor.shutdownNow()
+→ Stop immediately
+→ Abandon pending tasks
+→ Like "drop everything and close NOW"
+→ Returns list of tasks that never ran
+*
+*
+*
+* */
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -29,3 +63,4 @@ public class ExecutorExample {
         }
     }
 }
+
